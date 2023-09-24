@@ -1,11 +1,11 @@
 "use client";
-import { ShapeArea } from "./components/ShapeArea";
+import { ShapeArea } from "../components/ShapeArea";
 
 export default function Home() {
   return (
     <main>
       <div className="container">
-        <ShapeArea corners={3} size={20} />
+        <ShapeArea corners={3} size={10} />
       </div>
     </main>
   );
