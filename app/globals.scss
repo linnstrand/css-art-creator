@@ -1,0 +1,83 @@
+:root {
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  padding: 0.75rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ccc;
+}
+
+main {
+  position: relative;
+  margin: 0.5rem;
+  // background-color: #bbdeff;
+  height: 100%;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.shape {
+  width: 20rem;
+  height: 20rem;
+  padding: 1rem;
+  position: relative;
+  background-color: paleturquoise;
+  margin: 1rem;
+}
+
+.area {
+  // clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  // transform: rotate(30deg);
+  background-color: green;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.handles {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.handle {
+  position: absolute;
+  cursor: grab;
+  border-radius: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: orange;
+  opacity: 0.8;
+  margin: -0.6rem;
+}
