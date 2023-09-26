@@ -1,5 +1,5 @@
 "use client";
-import { useReducer } from "react";
+import { MouseEventHandler, useReducer, useState } from "react";
 
 const initialState = {
   id: 0,
@@ -45,13 +45,26 @@ export const ShapeSegment = ({ style }: any) => {
         };
     }
   };
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [active, setActive] = useState(false);
+
+  const select: MouseEventHandler<HTMLDivElement> = (event) => {
+    console.log("click");
+    setActive(!active);
+  };
 
   return (
     <div
+      onClick={select}
       className="shard"
       style={{
         ...style,
+        outline: active ? "2px dashed rgb(0 20 145 / 50%)" : "",
+        zIndex: active ? 20 : style.zIndex,
+        opacity: active ? 0.7 : style.opacity,
+        filter: active ? "none" : style.filter,
+        backgroundColor: active
+          ? "rgb(0 155 255 / 35%)"
+          : style.backgroundColor,
         top: style.top && style.top + "em",
         height: style.height && style.height + "em",
         width: style.width && style.width + "em",

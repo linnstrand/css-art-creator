@@ -15,6 +15,11 @@ body {
   height: 100%;
 }
 
+h2 {
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -24,6 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   padding-bottom: 2em;
+  background-color: #efefef;
 }
 
 nav a {
@@ -51,32 +57,41 @@ main {
   justify-content: center;
   align-items: center;
   flex: 1;
-  margin: 1.6rem;
+  margin: 1.6rem 1em;
   border: 1px solid gray;
+  background-color: white;
+  max-width: 900px;
 }
 
 .menu {
-  display: flex;
-  flex-direction: column;
-  max-width: 25rem;
+  width: 14rem;
+  margin-top: 1em;
 
   .menu-shapes {
     position: relative;
-    display: grid;
-    grid-gap: 0.8em;
-    grid-template-columns: 6em 6em;
-    grid-template-rows: 5em 5em;
-    .frame {
-      position: relative;
-    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin: 0.5em 0 1em 0;
+    place-items: center;
   }
-
+  .frame {
+    background-color: white;
+    padding: 0.6em;
+    border: 1px solid gray;
+    width: 6em;
+    height: 5em;
+    position: relative;
+    overflow: hidden;
+  }
   .menu-item {
     margin: 0.5rem 0.2rem;
   }
   .shard {
-    margin: 0 auto;
-    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
