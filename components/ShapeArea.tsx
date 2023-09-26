@@ -1,78 +1,91 @@
 "use client";
-import { DragEventHandler, useEffect, useState } from "react";
+import { ShapeSegment } from "@/components/ShapeSegment";
 
-type Props = {
+export const diamond = [
+  {
+    id: 1,
+    borderTopWidth: 0,
+    borderRightWidth: 2.5,
+    borderBottomWidth: 3,
+    borderLeftWidth: 2.5,
+    borderTopColor: "transparent",
+    borderRightColor: "transparent",
+    borderBottomColor: "green",
+    borderLeftColor: "transparent",
+    filter:
+      "drop-shadow(5em 0 rgb(131, 255, 131)) drop-shadow(5em 0 rgb(131, 255, 131))",
+  },
+  {
+    id: 2,
+    left: 2.5,
+    borderTopWidth: 3,
+    borderRightWidth: 2.5,
+    borderBottomWidth: 0,
+    borderLeftWidth: 2.5,
+    borderTopColor: "yellow",
+    borderRightColor: "transparent",
+    borderBottomColor: "transparent",
+    borderLeftColor: "transparent",
+    filter: "drop-shadow(5em 0 rgb(252, 252, 146))",
+  },
+  {
+    id: 3,
+    top: 3,
+    borderTopWidth: 10,
+    borderRightWidth: 0,
+    borderBottomWidth: 0,
+    borderLeftWidth: 7.5,
+    borderTopColor: "blue",
+    borderRightColor: "transparent",
+    borderBottomColor: "transparent",
+    borderLeftColor: "transparent",
+  },
+  {
+    id: 4,
+    top: 3,
+    left: 7.5,
+    borderTopWidth: 10,
+    borderRightWidth: 7.5,
+    borderBottomWidth: 0,
+    borderLeftWidth: 0,
+    borderTopColor: "purple",
+    borderRightColor: "transparent",
+    borderBottomColor: "transparent",
+    borderLeftColor: "transparent",
+  },
+  {
+    id: 5,
+    top: 3,
+    left: 0,
+    borderTopWidth: 3.35,
+    borderRightWidth: 2.5,
+    borderBottomWidth: 0,
+    borderLeftWidth: 2.5,
+    borderTopColor: "red",
+    borderRightColor: "transparent",
+    borderBottomColor: "transparent",
+    borderLeftColor: "transparent",
+    filter: "drop-shadow(5em 0em pink) drop-shadow(5em 0em pink)",
+  },
+];
+interface Props {
   corners: number;
   size: number;
-};
-
-const getShape = (corners: number) => {
-  switch (corners) {
-    case 3:
-      return [
-        { x: 50, y: 0 },
-        { x: 0, y: 100 },
-        { x: 100, y: 100 },
-      ];
-      break;
-
-    default:
-      return [
-        { x: 50, y: 0 },
-        { x: 0, y: 100 },
-      ];
-  }
-};
+}
 
 export const ShapeArea = ({ corners, size }: Props) => {
-  const [coords, setCoords] = useState<
-    { x: number; y: number }[] | undefined
-  >();
-  const [poly, setPoly] = useState("");
-
-  useEffect(() => {
-    const radius = size / 2;
-    const c = getShape(corners);
-    setCoords(c);
-    const p = c.map((c) => `${c.x}% ${c.y}%`).join(", ");
-    setPoly(`polygon(${p})`);
-  }, [corners, size]);
-
   return (
-    <div className="shape" style={{ height: `${size}em`, width: `${size}em` }}>
-      {coords && (
-        <>
-          <div className="area" style={{ clipPath: poly }}></div>
-          <div className="handles">
-            {coords.map((c, i) => (
-              <DragHandle c={c} key={i} />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
+    <>
+      <div
+        className="shadow-shape"
+        style={{
+          fontSize: "90%",
+        }}
+      >
+        {diamond.map((d) => (
+          <ShapeSegment key={d.id} style={d} />
+        ))}
+      </div>
+    </>
   );
 };
-
-function DragHandle({ c }: { c: { x: number; y: number } }) {
-  const dropped: DragEventHandler<HTMLDivElement> = (event) => {
-    console.log(event);
-  };
-
-  const dragging: DragEventHandler<HTMLDivElement> = (event) => {
-    throw new Error("Function not implemented.");
-  };
-
-  return (
-    <div
-      draggable
-      onDragEnd={dropped}
-      onDrag={dragging}
-      className="handle"
-      style={{
-        top: `${c.y}%`,
-        left: `${c.x}%`,
-      }}
-    ></div>
-  );
-}

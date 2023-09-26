@@ -55,6 +55,31 @@ main {
   border: 1px solid gray;
 }
 
+.menu {
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+
+  .menu-shapes {
+    position: relative;
+    display: grid;
+    grid-gap: 0.8em;
+    grid-template-columns: 6em 6em;
+    grid-template-rows: 5em 5em;
+    .frame {
+      position: relative;
+    }
+  }
+
+  .menu-item {
+    margin: 0.5rem 0.2rem;
+  }
+  .shard {
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
 .shape {
   position: absolute;
   top: 0;
@@ -99,71 +124,14 @@ main {
   position: relative;
 }
 
-.shard,
-.shard2 {
-  position: relative;
+.shard {
+  position: absolute;
   width: 0;
   height: 0;
   border-style: solid;
   top: 0;
-  border: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
   border-color: transparent transparent transparent transparent;
-}
-.shard2 {
-  position: absolute;
-}
-
-.shard:before,
-.shard:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  top: 0;
-}
-
-.segment-1 {
-  height: 3em;
-  &:before {
-    border-color: transparent transparent green transparent;
-    border-width: 0 2.5em 3em 2.5em;
-    filter: drop-shadow(5em 0 rgb(131, 255, 131))
-      drop-shadow(5em 0 rgb(131, 255, 131));
-  }
-
-  &:after {
-    border-color: yellow transparent transparent transparent;
-    border-width: 3em 2.5em 0 2.5em;
-    left: 2.5em;
-    filter: drop-shadow(5em 0 rgb(252, 252, 146));
-  }
-}
-
-.segment-2 {
-  height: 3em;
-  &:before {
-    border-color: red transparent transparent transparent;
-    border-width: 3.35em 2.5em 0 2.5em;
-    z-index: 1;
-    filter: drop-shadow(5em 0em pink) drop-shadow(5em 0em pink);
-  }
-  &:after {
-    border: none;
-  }
-}
-
-.segment-3 {
-  height: 10em;
-  &:before {
-    top: -3em;
-    border-color: blue transparent transparent transparent;
-    border-width: 10em 0 0 7.5em;
-  }
-  &:after {
-    top: -3em;
-    left: 7.5em;
-    border-color: purple transparent transparent transparent;
-    border-width: 10em 7.5em 0 0;
-  }
 }
