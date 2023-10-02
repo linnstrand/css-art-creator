@@ -58,8 +58,7 @@ export const ShapeMenu = (props: Props) => {
               borderRightColor: "transparent",
               borderBottomColor: "green",
               borderLeftColor: "transparent",
-              filter:
-                "drop-shadow(2em 0 rgb(131, 255, 131)) drop-shadow(2em 0 rgb(131, 255, 131))",
+              filter: { amount: 2, color: "rgb(131, 255, 131)" },
             }}
           />
         </div>

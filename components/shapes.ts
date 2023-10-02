@@ -1,4 +1,9 @@
-export const shapes = [
+import { ShardProperties } from "@/app/atoms";
+
+export const shapes: {
+  name: string;
+  style: ShardProperties;
+}[] = [
   {
     name: "triangle",
     style: {
@@ -10,7 +15,9 @@ export const shapes = [
       borderRightColor: "transparent",
       borderBottomColor: "teal",
       borderLeftColor: "transparent",
-      filter: "",
+      id: 0,
+      top: 0,
+      left: 0,
     },
   },
   {
@@ -24,6 +31,9 @@ export const shapes = [
       borderRightColor: "transparent",
       borderBottomColor: "transparent",
       borderLeftColor: "transparent",
+      id: 0,
+      top: 0,
+      left: 0,
     },
   },
   {
@@ -32,10 +42,6 @@ export const shapes = [
       borderRadius: "50%",
       height: 4,
       width: 4,
-      borderTopWidth: 0,
-      borderRightWidth: 0,
-      borderBottomWidth: 0,
-      borderLeftWidth: 0,
       backgroundColor: "teal",
     },
   },
@@ -44,10 +50,6 @@ export const shapes = [
     style: {
       height: 4,
       width: 4,
-      borderTopWidth: 0,
-      borderRightWidth: 0,
-      borderBottomWidth: 0,
-      borderLeftWidth: 0,
       backgroundColor: "teal",
     },
   },

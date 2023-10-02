@@ -1,9 +1,12 @@
 "use client";
-import { ShardProperties } from "./ShapeArea";
+
+import { ShardProperties } from "@/app/atoms";
 
 export const diamond: ShardProperties[] = [
   {
     id: 1,
+    top: 0,
+    left: 0,
     borderTopWidth: 0,
     borderRightWidth: 2.5,
     borderBottomWidth: 3,
@@ -12,12 +15,15 @@ export const diamond: ShardProperties[] = [
     borderRightColor: "transparent",
     borderBottomColor: "green",
     borderLeftColor: "transparent",
-    filter:
-      "drop-shadow(5em 0 rgb(131, 255, 131)) drop-shadow(5em 0 rgb(131, 255, 131))",
+    filter: [
+      { x: 5, color: "rgb(131, 255, 131)" },
+      { x: 5, color: "rgb(131, 255, 131)" },
+    ],
   },
   {
     id: 2,
     left: 2.5,
+    top: 0,
     borderTopWidth: 3,
     borderRightWidth: 2.5,
     borderBottomWidth: 0,
@@ -26,11 +32,12 @@ export const diamond: ShardProperties[] = [
     borderRightColor: "transparent",
     borderBottomColor: "transparent",
     borderLeftColor: "transparent",
-    filter: "drop-shadow(5em 0 rgb(252, 252, 146))",
+    filter: [{ x: 5, color: "rgb(252, 252, 146)" }],
   },
   {
     id: 3,
     top: 3,
+    left: 0,
     borderTopWidth: 10,
     borderRightWidth: 0,
     borderBottomWidth: 0,
@@ -65,6 +72,9 @@ export const diamond: ShardProperties[] = [
     borderRightColor: "transparent",
     borderBottomColor: "transparent",
     borderLeftColor: "transparent",
-    filter: "drop-shadow(5em 0em pink) drop-shadow(5em 0em pink)",
+    filter: [
+      { x: 5, color: "pink" },
+      { x: 5, color: "pink" },
+    ],
   },
 ];

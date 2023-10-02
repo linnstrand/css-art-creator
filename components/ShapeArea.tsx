@@ -2,21 +2,6 @@
 import { ShapeSegment } from "@/components/ShapeSegment";
 import { diamond } from "./diamond";
 
-export interface ShardProperties {
-  id: number;
-  top?: number;
-  left?: number;
-  borderTopWidth: number;
-  borderRightWidth: number;
-  borderBottomWidth: number;
-  borderLeftWidth: number;
-  borderTopColor: string;
-  borderRightColor: string;
-  borderBottomColor: string;
-  borderLeftColor: string;
-  filter?: string;
-}
-
 interface Props {
   corners: number;
   size: number;

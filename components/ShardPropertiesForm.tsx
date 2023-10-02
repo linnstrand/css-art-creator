@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { ShardProperties } from "./ShapeArea";
-import { useAtom, atom } from "jotai";
+import React from "react";
+import { useAtom } from "jotai";
 import { activeShardAtom } from "@/app/atoms";
 
 export const ShardPropertiesForm = () => {
-  // const [activeShard, setActiveShard] = useState<ShardProperties>(initialState);
   const [activeShard, setActiveShard] = useAtom(activeShardAtom);
 
   const handleChange = (

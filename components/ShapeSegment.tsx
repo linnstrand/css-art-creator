@@ -1,9 +1,9 @@
 "use client";
-import { activeShardAtom } from "@/app/atoms";
+import { ShardProperties, activeShardAtom } from "@/app/atoms";
 import { useAtom } from "jotai";
-import { MouseEventHandler, useReducer, useState } from "react";
+import { MouseEventHandler } from "react";
 
-export const ShapeSegment = ({ style }: any) => {
+export const ShapeSegment = ({ style }: { style: ShardProperties }) => {
   const [activeShard, setActiveShard] = useAtom(activeShardAtom);
   const active = activeShard.id === style.id;
 
@@ -18,17 +18,19 @@ export const ShapeSegment = ({ style }: any) => {
       className="shard"
       style={{
         ...style,
+        width: style.width + "em",
         outline: active ? "1px dashed rgb(0 20 145 / 50%)" : "",
-        zIndex: active ? 20 : style.zIndex,
-        opacity: active ? 0.7 : style.opacity,
-        filter: active ? "none" : style.filter,
+        zIndex: active ? 20 : 1,
+        opacity: active ? 0.7 : 1,
+        filter: style.filter
+          ?.map((f) => `drop-shadow(${f.x ?? 0}em ${f.y ?? 0}em ${f.color})`)
+          .join(" "),
         backgroundColor: active
           ? "rgb(0 155 255 / 35%)"
           : style.backgroundColor,
-        top: style.top && style.top + "em",
-        height: style.height && style.height + "em",
-        width: style.width && style.width + "em",
-        left: style.left && style.left + "em",
+        top: style.top + "em",
+        height: style.height + "em",
+        left: style.left + "em",
         borderTopWidth: style.borderTopWidth + "em",
         borderRightWidth: style.borderRightWidth + "em",
         borderBottomWidth: style.borderBottomWidth + "em",
