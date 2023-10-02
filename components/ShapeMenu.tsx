@@ -1,63 +1,9 @@
-import React from "react";
-import { ShapeSegment } from "./ShapeSegment";
-import { diamond } from "./ShapeArea";
+import React, { MouseEventHandler } from "react";
+import { diamond } from "./diamond";
+import { shapes } from "./shapes";
+import { ShardPropertiesForm } from "./ShardPropertiesForm";
 
 type Props = {};
-
-const shapes = [
-  {
-    name: "triangle",
-    style: {
-      borderTopWidth: 0,
-      borderRightWidth: 2.5,
-      borderBottomWidth: 4,
-      borderLeftWidth: 2.5,
-      borderTopColor: "transparent",
-      borderRightColor: "transparent",
-      borderBottomColor: "teal",
-      borderLeftColor: "transparent",
-      filter: "",
-    },
-  },
-  {
-    name: "triangle_right",
-    style: {
-      borderTopWidth: 4,
-      borderRightWidth: 0,
-      borderBottomWidth: 0,
-      borderLeftWidth: 5,
-      borderTopColor: "teal",
-      borderRightColor: "transparent",
-      borderBottomColor: "transparent",
-      borderLeftColor: "transparent",
-    },
-  },
-  {
-    name: "circle",
-    style: {
-      borderRadius: "50%",
-      height: 4,
-      width: 4,
-      borderTopWidth: 0,
-      borderRightWidth: 0,
-      borderBottomWidth: 0,
-      borderLeftWidth: 0,
-      backgroundColor: "teal",
-    },
-  },
-  {
-    name: "rectangle",
-    style: {
-      height: 4,
-      width: 4,
-      borderTopWidth: 0,
-      borderRightWidth: 0,
-      borderBottomWidth: 0,
-      borderLeftWidth: 0,
-      backgroundColor: "teal",
-    },
-  },
-];
 
 export const ShapeMenu = (props: Props) => {
   return (
@@ -66,14 +12,14 @@ export const ShapeMenu = (props: Props) => {
       <div className="menu-shapes">
         {shapes.map((s) => (
           <div className="frame" key={s.name}>
-            <ShapeSegment style={s.style} />
+            <ShapeMenuItem style={s.style} />
           </div>
         ))}
       </div>
       <h2>Combined</h2>
       <div className="menu-shapes">
         <div className="frame">
-          <ShapeSegment
+          <ShapeMenuItem
             style={{
               borderTopWidth: 4,
               left: 1.6,
@@ -86,7 +32,7 @@ export const ShapeMenu = (props: Props) => {
               borderLeftColor: "transparent",
             }}
           />
-          <ShapeSegment
+          <ShapeMenuItem
             style={{
               borderTopWidth: 4,
               left: 4.1,
@@ -101,7 +47,7 @@ export const ShapeMenu = (props: Props) => {
           />
         </div>
         <div className="frame">
-          <ShapeSegment
+          <ShapeMenuItem
             style={{
               borderTopWidth: 0,
               left: 1,
@@ -120,16 +66,34 @@ export const ShapeMenu = (props: Props) => {
       </div>
       <div>
         <h2>Shards</h2>
-        {diamond.map((d) => (
-          <div className="menu-item" key={d.id}>
-            {/* {Object.keys(d).map((k) => (
-              <div key={k}>
-                {k}: {d[k]}
-              </div>
-            ))} */}
-          </div>
-        ))}
+        <div className="menu-item">
+          <ShardPropertiesForm />
+        </div>
       </div>
     </div>
+  );
+};
+
+const ShapeMenuItem = ({ style }: any) => {
+  const select: MouseEventHandler<HTMLDivElement> = (event) => {
+    console.log("click");
+  };
+
+  return (
+    <div
+      onClick={select}
+      className="shard"
+      style={{
+        ...style,
+        top: style.top && style.top + "em",
+        height: style.height && style.height + "em",
+        width: style.width && style.width + "em",
+        left: style.left && style.left + "em",
+        borderTopWidth: style.borderTopWidth + "em",
+        borderRightWidth: style.borderRightWidth + "em",
+        borderBottomWidth: style.borderBottomWidth + "em",
+        borderLeftWidth: style.borderLeftWidth + "em",
+      }}
+    ></div>
   );
 };
