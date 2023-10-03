@@ -2,6 +2,7 @@ import "./globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import StyledComponentsRegistry from "./registry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,7 @@ export default function RootLayout({
             <Link href="shadows">Borders and Shadows</Link>
           </nav>
         </header>
-        {children}
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
   );

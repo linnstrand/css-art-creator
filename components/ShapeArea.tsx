@@ -2,12 +2,7 @@
 import { ShapeSegment } from "@/components/ShapeSegment";
 import { diamond } from "./diamond";
 
-interface Props {
-  corners: number;
-  size: number;
-}
-
-export const ShapeArea = ({ corners, size }: Props) => {
+export const ShapeArea = () => {
   return (
     <>
       <div

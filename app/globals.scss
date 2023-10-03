@@ -83,25 +83,23 @@ main {
   }
   .frame {
     background-color: white;
-    padding: 0.6em;
     border: 1px solid gray;
     width: 6em;
     height: 5em;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .menu-item {
     margin: 0.5rem 0.2rem;
-  }
-  .shard {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 
 .shape {
   position: absolute;
+  margin: auto;
   top: 0;
   bottom: 0;
   left: 0;

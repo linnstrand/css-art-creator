@@ -1,20 +1,14 @@
 "use client";
 
-import { ShardProperties } from "@/app/atoms";
+import { ShardProperties } from "@/app/models";
 
 export const diamond: ShardProperties[] = [
   {
     id: 1,
-    top: 0,
-    left: 0,
-    borderTopWidth: 0,
     borderRightWidth: 2.5,
     borderBottomWidth: 3,
     borderLeftWidth: 2.5,
-    borderTopColor: "transparent",
-    borderRightColor: "transparent",
     borderBottomColor: "green",
-    borderLeftColor: "transparent",
     filter: [
       { x: 5, color: "rgb(131, 255, 131)" },
       { x: 5, color: "rgb(131, 255, 131)" },
@@ -23,29 +17,18 @@ export const diamond: ShardProperties[] = [
   {
     id: 2,
     left: 2.5,
-    top: 0,
     borderTopWidth: 3,
     borderRightWidth: 2.5,
-    borderBottomWidth: 0,
     borderLeftWidth: 2.5,
     borderTopColor: "yellow",
-    borderRightColor: "transparent",
-    borderBottomColor: "transparent",
-    borderLeftColor: "transparent",
     filter: [{ x: 5, color: "rgb(252, 252, 146)" }],
   },
   {
     id: 3,
     top: 3,
-    left: 0,
     borderTopWidth: 10,
-    borderRightWidth: 0,
-    borderBottomWidth: 0,
     borderLeftWidth: 7.5,
     borderTopColor: "blue",
-    borderRightColor: "transparent",
-    borderBottomColor: "transparent",
-    borderLeftColor: "transparent",
   },
   {
     id: 4,
@@ -53,25 +36,15 @@ export const diamond: ShardProperties[] = [
     left: 7.5,
     borderTopWidth: 10,
     borderRightWidth: 7.5,
-    borderBottomWidth: 0,
-    borderLeftWidth: 0,
     borderTopColor: "purple",
-    borderRightColor: "transparent",
-    borderBottomColor: "transparent",
-    borderLeftColor: "transparent",
   },
   {
     id: 5,
     top: 3,
-    left: 0,
     borderTopWidth: 3.35,
     borderRightWidth: 2.5,
-    borderBottomWidth: 0,
     borderLeftWidth: 2.5,
     borderTopColor: "red",
-    borderRightColor: "transparent",
-    borderBottomColor: "transparent",
-    borderLeftColor: "transparent",
     filter: [
       { x: 5, color: "pink" },
       { x: 5, color: "pink" },
