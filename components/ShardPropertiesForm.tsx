@@ -2,26 +2,16 @@ import React from "react";
 import { useAtom } from "jotai";
 import { activeShardAtom } from "@/app/atoms";
 import styled from "styled-components";
+import { FormField } from "./FormField";
 
-const BaseInput = styled.input`
-  display: block;
-  padding: 0.25rem 0.25rem;
-  font-size: 1rem;
-  line-height: 1.2;
-  background-clip: padding-box;
+const FieldSet = styled.fieldset`
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   border: 1px solid rgb(222 226 230);
-  border-radius: 0.15rem;
-  margin-top: 0.25rem;
-  &:focus {
-    border-color: #86b7fe;
-    outline: 1px solid blue;
-  }
 `;
-
-const InputWrapper = styled.div`ß
-  margin-bottom: 0.5rem;
-`;
-
+const Legend = styled.legend``;
 export const ShardPropertiesForm = () => {
   const [activeShard, setActiveShard] = useAtom(activeShardAtom);
 
@@ -39,62 +29,55 @@ export const ShardPropertiesForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputWrapper>
-        <label>
-          Border Top:
-          <BaseInput
-            type="number"
-            name="borderTopWidth"
-            value={activeShard.borderTopWidth}
-            onChange={handleChange}
-          />
-        </label>
-      </InputWrapper>
-      <InputWrapper>
-        <label>
-          Border Right:
-          <BaseInput
-            type="number"
-            name="borderRightWidth"
-            value={activeShard.borderRightWidth}
-            onChange={handleChange}
-          />
-        </label>
-      </InputWrapper>
-      <InputWrapper>
-        <label>
-          Border Bottom:
-          <BaseInput
-            type="number"
-            name="borderBottomWidth"
-            value={activeShard.borderBottomWidth}
-            onChange={handleChange}
-          />
-        </label>
-      </InputWrapper>
-      <InputWrapper>
-        <label>
-          Border Left:
-          <BaseInput
-            type="number"
-            name="borderLeftWidth"
-            value={activeShard.borderLeftWidth}
-            onChange={handleChange}
-          />
-        </label>
-      </InputWrapper>
-      <InputWrapper>
-        <label>
-          Top:
-          <BaseInput
-            type="number"
-            name="top"
-            value={activeShard.top}
-            onChange={handleChange}
-          />
-        </label>
-      </InputWrapper>
-      {/* Add similar input fields for other properties */}
+      <FieldSet>
+        <Legend>Borders</Legend>
+        <FormField
+          type="number"
+          name="borderTopWidth"
+          value={activeShard.borderTopWidth}
+          onChange={handleChange}
+        >
+          Top
+        </FormField>
+        <FormField
+          type="number"
+          name="borderRightWidth"
+          value={activeShard.borderRightWidth}
+          onChange={handleChange}
+        >
+          Right
+        </FormField>
+        <FormField
+          type="number"
+          name="borderBottomWidth"
+          value={activeShard.borderBottomWidth}
+          onChange={handleChange}
+        >
+          Bottom
+        </FormField>
+        <FormField
+          type="number"
+          name="borderLeftWidth"
+          value={activeShard.borderLeftWidth}
+          onChange={handleChange}
+        >
+          Left
+        </FormField>
+      </FieldSet>
+      <FieldSet>
+        <Legend>Position</Legend>
+        <FormField
+          type="number"
+          name="top"
+          value={activeShard.top}
+          onChange={handleChange}
+        >
+          Top
+        </FormField>
+        <FormField value={activeShard.left} onChange={handleChange} name="left">
+          Left
+        </FormField>
+      </FieldSet>
       <div>
         <button type="submit">Submit</button>
       </div>
