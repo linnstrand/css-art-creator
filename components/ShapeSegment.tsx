@@ -1,18 +1,24 @@
 "use client";
 import { activeShardAtom } from "@/app/atoms";
 import { ShardProperties } from "@/app/models";
-import { getShardCSS } from "@/app/util";
+import { getShardCSS, initialValue } from "@/app/util";
 import { useAtom } from "jotai";
+import { useState, useEffect } from "react";
 
 export const ShapeSegment = ({ style }: { style: ShardProperties }) => {
   const [activeShard, setActiveShard] = useAtom(activeShardAtom);
+  const [css, setCss] = useState(() => getShardCSS(style));
   const active = activeShard.id === style.id;
 
-  const css = getShardCSS(style);
+  useEffect(() => {
+    if (active) {
+      setCss(getShardCSS(activeShard));
+    }
+  }, [style, activeShard, active]);
 
   return (
     <div
-      onClick={() => setActiveShard(style)}
+      onClick={() => setActiveShard({ ...initialValue, ...style })}
       className="shard"
       style={{
         ...css,

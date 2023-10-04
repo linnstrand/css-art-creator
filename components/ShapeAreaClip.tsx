@@ -55,9 +55,7 @@ export const ShapeAreaClip = ({ corners, size }: Props) => {
 };
 
 function DragHandle({ c }: { c: { x: number; y: number } }) {
-  const dropped: DragEventHandler<HTMLDivElement> = (event) => {
-    console.log(event);
-  };
+  const dropped: DragEventHandler<HTMLDivElement> = (event) => {};
 
   const dragging: DragEventHandler<HTMLDivElement> = (event) => {
     throw new Error("Function not implemented.");

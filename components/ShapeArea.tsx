@@ -1,8 +1,10 @@
 "use client";
+import { shapeAtom } from "@/app/atoms";
 import { ShapeSegment } from "@/components/ShapeSegment";
-import { diamond } from "./diamond";
+import { useAtom } from "jotai";
 
 export const ShapeArea = () => {
+  const [shape, setShape] = useAtom(shapeAtom);
   return (
     <>
       <div
@@ -11,7 +13,7 @@ export const ShapeArea = () => {
           fontSize: "90%",
         }}
       >
-        {diamond.map((d) => (
+        {shape.map((d) => (
           <ShapeSegment key={d.id} style={d} />
         ))}
       </div>
