@@ -8,6 +8,7 @@ const FieldSet = styled.fieldset`
   padding: 0.5rem;
   display: flex;
   flex-flow: row wrap;
+  width: 100%;
   border: 1px solid rgb(222 226 230);
 `;
 const FieldsWrapper = styled.div`
