@@ -5,10 +5,9 @@ import styled from "styled-components";
 import { FormField } from "./FormField";
 
 const FieldSet = styled.fieldset`
-  width: min-content;
   padding: 0.5rem;
-  display: grid;
-  grid-gap: 0.25rem;
+  display: flex;
+  flex-flow: row wrap;
   border: 1px solid rgb(222 226 230);
 `;
 const FieldsWrapper = styled.div`
@@ -81,13 +80,6 @@ export const ShardPropertiesForm = () => {
           >
             Border Radius
           </FormField>
-          <FormField
-            value={activeShard.backgroundColor}
-            onChange={handleChange}
-            name="backgroundColor"
-          >
-            Background Color
-          </FormField>
         </FieldSet>
         <FieldSet>
           <Legend>Borders</Legend>
@@ -125,7 +117,14 @@ export const ShardPropertiesForm = () => {
           </FormField>
         </FieldSet>
         <FieldSet>
-          <Legend>Border Colors</Legend>
+          <Legend> Colors</Legend>
+          <FormField
+            value={activeShard.backgroundColor}
+            onChange={handleChange}
+            name="backgroundColor"
+          >
+            Background
+          </FormField>
           <FormField
             name="borderTopColor"
             value={activeShard.borderTopColor}
