@@ -69,8 +69,8 @@ main {
 }
 
 .menu {
-  width: 14rem;
-  margin-top: 1em;
+  margin: 1em;
+  max-width: 425px;
 
   .menu-shapes {
     position: relative;

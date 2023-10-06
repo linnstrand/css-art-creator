@@ -1,15 +1,15 @@
 import React, { InputHTMLAttributes } from "react";
 import styled from "styled-components";
 
-const BaseInput = styled.input`
-  display: block;
-  padding: 0.25rem 0.25rem;
+const BaseInput = styled.input<{ $type?: string }>`
+  padding: 0.35rem;
   font-size: 1rem;
   line-height: 1.2;
   background-clip: padding-box;
   border: 1px solid rgb(222 226 230);
   border-radius: 0.15rem;
   margin-top: 0.25rem;
+  width: ${(props) => (props.$type === "number" ? "10ch" : "auto")};
   &:focus {
     border-color: #86b7fe;
     outline: 1px solid blue;
@@ -25,25 +25,22 @@ const InputLabel = styled.label`
 `;
 const InputLabelText = styled.span`
   display: flex;
+  flex: 1;
+  margin-right: 1ch;
 `;
 
 export function FormField({
-  value,
-  name,
+  type,
   children,
-  onChange,
+  ...rest
 }: InputHTMLAttributes<HTMLInputElement>) {
+  console.log(type);
   return (
-    <InputWrapper>
+    <>
       <InputLabel>
         <InputLabelText>{children}:</InputLabelText>
-        <BaseInput
-          type="number"
-          name={name}
-          value={value}
-          onChange={onChange}
-        />
+        <BaseInput type={type} $type={type} {...rest} />
       </InputLabel>
-    </InputWrapper>
+    </>
   );
 }

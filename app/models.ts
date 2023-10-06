@@ -14,5 +14,5 @@ export interface ShardProperties {
   backgroundColor?: string;
   height?: number;
   width?: number;
-  filter?: { x?: number; y?: number; color: string }[];
+  filter?: { x: number; y: number; color: string }[];
 }
