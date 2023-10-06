@@ -4,7 +4,7 @@ import styled from "styled-components";
 const BaseInput = styled.div<{ $type?: string }>`
   display: flex;
   flex: 1;
-  width: ${(props) => (props.$type === "number" ? "10ch" : "18ch")};
+  width: ${(props) => (props.$type === "number" ? "6ch" : "15ch")};
   margin-inline-end: 1rem;
   input {
     font-size: 14px;

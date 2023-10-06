@@ -23,8 +23,6 @@ export const ShapeSegment = ({ style }: { style: ShardProperties }) => {
       style={{
         ...css,
         outline: active ? "1px dashed rgb(0 20 145 / 50%)" : "",
-        zIndex: active ? 20 : 1,
-        opacity: active ? 0.7 : 1,
         backgroundColor: active
           ? "rgb(0 155 255 / 35%)"
           : style.backgroundColor,

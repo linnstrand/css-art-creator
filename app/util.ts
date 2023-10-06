@@ -15,7 +15,7 @@ export const initialValue: ShardProperties = {
   backgroundColor: "transparent",
 };
 
-const unit = "em";
+const unit = "px";
 const formatCSSProp = (prop: number | undefined): string => {
   return (prop ?? 0) + unit;
 };
@@ -42,7 +42,7 @@ export const getShardCSS = (style: ShardProperties) => {
     borderTopWidth: formatCSSProp(style.borderTopWidth),
     borderRadius: style.borderRadius ?? 0,
     filter: style.filter
-      ?.map((f) => `drop-shadow(${f.x ?? 0}em ${f.y ?? 0}em ${f.color})`)
+      ?.map((f) => `drop-shadow(${f.x ?? 0}px ${f.y ?? 0}px ${f.color})`)
       .join(" "),
   };
 };

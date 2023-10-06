@@ -3,6 +3,8 @@ import { ShardPropertiesForm } from "./ShardPropertiesForm";
 import styled from "styled-components";
 import { ShardProperties } from "@/app/models";
 import { getShardCSS } from "@/app/util";
+import { shapeAtom } from "@/app/atoms";
+import { useAtom } from "jotai";
 
 const shapes: {
   name: string;
@@ -11,36 +13,36 @@ const shapes: {
   {
     name: "triangle",
     style: {
-      borderRightWidth: 2.5,
-      borderBottomWidth: 4,
-      borderLeftWidth: 2.5,
+      borderRightWidth: 40,
+      borderBottomWidth: 64,
+      borderLeftWidth: 40,
       borderBottomColor: "teal",
     },
   },
   {
     name: "triangle_right",
     style: {
-      borderTopWidth: 4,
-      borderLeftWidth: 5,
+      borderTopWidth: 64,
+      borderLeftWidth: 80,
       borderTopColor: "teal",
     },
   },
   {
     name: "circle",
     style: {
-      left: 0.5,
+      left: 10,
       borderRadius: "50%",
-      height: 4,
-      width: 4,
+      height: 64,
+      width: 64,
       backgroundColor: "teal",
     },
   },
   {
     name: "rectangle",
     style: {
-      height: 4,
-      left: 0.5,
-      width: 4,
+      height: 64,
+      left: 10,
+      width: 64,
       backgroundColor: "teal",
     },
   },
@@ -60,14 +62,14 @@ export const ShapeMenu = () => {
         <ShapeMenuItem
           styles={[
             {
-              borderTopWidth: 4,
-              borderLeftWidth: 2.5,
+              borderTopWidth: 64,
+              borderLeftWidth: 40,
               borderTopColor: "teal",
             },
             {
-              borderTopWidth: 4,
-              left: 2.5,
-              borderRightWidth: 2.5,
+              borderTopWidth: 64,
+              left: 40,
+              borderRightWidth: 40,
               borderTopColor: "#ff8ca0",
             },
           ]}
@@ -75,13 +77,13 @@ export const ShapeMenu = () => {
         <ShapeMenuItem
           styles={{
             left: 0,
-            borderRightWidth: 1,
-            borderBottomWidth: 1.4,
-            borderLeftWidth: 1,
+            borderRightWidth: 16,
+            borderBottomWidth: 24,
+            borderLeftWidth: 16,
             borderBottomColor: "green",
             filter: [
-              { x: 1.3, y: 1.3, color: "rgb(131, 255, 131)" },
-              { x: 1.3, y: 1.3, color: "rgb(131, 255, 131)" },
+              { x: 21, y: 21, color: "rgb(131, 255, 131)" },
+              { x: 21, y: 21, color: "rgb(131, 255, 131)" },
             ],
           }}
         />
@@ -108,8 +110,17 @@ const ShapeMenuItem = ({
 }: {
   styles: ShardProperties | ShardProperties[];
 }) => {
+  const [shape, setShape] = useAtom(shapeAtom);
+
+  const addNew = () => {
+    const item: ShardProperties[] = Array.isArray(styles)
+      ? shape.map((i) => Object.assign({}, i))
+      : [Object.assign({}, styles)];
+    setShape([...shape, ...item]);
+  };
+
   return (
-    <div className="frame">
+    <div className="frame" onClick={addNew}>
       <Wrapper>
         {Array.isArray(styles) ? (
           styles.map((s, i) => (
