@@ -3,30 +3,50 @@ import { activeShardAtom } from "@/app/atoms";
 import { ShardProperties } from "@/app/models";
 import { getShardCSS, initialValue } from "@/app/util";
 import { useAtom } from "jotai";
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 
-export const ShapeSegment = ({ style }: { style: ShardProperties }) => {
-  const [activeShard, setActiveShard] = useAtom(activeShardAtom);
-  const [css, setCss] = useState(() => getShardCSS(style));
-  const active = activeShard.id === style.id;
+interface Props {
+  style: ShardProperties;
+}
 
-  useEffect(() => {
-    if (active) {
-      setCss(getShardCSS(activeShard));
-    }
-  }, [style, activeShard, active]);
+export const ShapeSegment = forwardRef<HTMLDivElement, Props>(
+  ({ style }, ref) => {
+    const [activeShard, setActiveShard] = useAtom(activeShardAtom);
+    const [css, setCss] = useState(() => getShardCSS(style));
+    const active = activeShard.id === style.id;
 
-  return (
-    <div
-      onClick={() => setActiveShard({ ...initialValue, ...style })}
-      className="shard"
-      style={{
-        ...css,
-        outline: active ? "1px dashed rgb(0 20 145 / 50%)" : "",
-        backgroundColor: active
-          ? "rgb(0 155 255 / 35%)"
-          : style.backgroundColor,
-      }}
-    ></div>
-  );
-};
+    useEffect(() => {
+      if (active) {
+        setCss(getShardCSS(activeShard));
+      }
+    }, [style, activeShard, active]);
+
+    return (
+      <>
+        <div
+          ref={ref}
+          onClick={() => setActiveShard({ ...initialValue, ...style })}
+          className="shard"
+          style={css}
+        ></div>
+        {active && (
+          <div
+            ref={ref}
+            onClick={() => setActiveShard({ ...initialValue, ...style })}
+            className="shard"
+            style={{
+              ...css,
+              filter: "none",
+              pointerEvents: "none",
+              outline: "1px dashed rgb(0 20 145 )",
+              backgroundColor: "rgb(0 155 255 )",
+              opacity: 0.5,
+              zIndex: 20,
+            }}
+          ></div>
+        )}
+      </>
+    );
+  }
+);
+ShapeSegment.displayName = "ShapeSegment";
