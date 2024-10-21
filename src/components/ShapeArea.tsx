@@ -1,19 +1,7 @@
-"use client";
-import { shapeAtom } from "@/app/atoms";
-import { ShapeSegment } from "@/components/ShapeSegment";
-import { useAtom } from "jotai";
-import { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
-
-const ContainerShape = styled.div`
-  position: relative;
-`;
-const ShadowShape = styled.div<{ width: number; height: number }>`
-  position: relative;
-  border: 1px dashed rgb(95 162 255);
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
-`;
+import { useAtom } from 'jotai';
+import { useEffect, useRef, useState } from 'react';
+import { shapeAtom } from '../atoms';
+import { ShapeSegment } from './ShapeSegment';
 
 export const ShapeArea = () => {
   const [shape, setShape] = useAtom(shapeAtom);
@@ -38,13 +26,16 @@ export const ShapeArea = () => {
 
   return (
     <>
-      <ShadowShape width={size.width} height={size.height}>
-        <ContainerShape ref={ref}>
+      <div
+        className="relative border-dashed border-[rgb(95,162,255)]"
+        style={{ width: `${size.width}px`, height: `${size.height}px` }}
+      >
+        <div className="relative" ref={ref}>
           {shape.map((d, i) => (
             <ShapeSegment key={i} style={d} ref={ref2} />
           ))}
-        </ContainerShape>
-      </ShadowShape>
+        </div>
+      </div>
     </>
   );
 };

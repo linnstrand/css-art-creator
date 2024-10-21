@@ -1,6 +1,4 @@
-"use client";
-
-import { ShardProperties } from "@/app/models";
+import { ShardProperties } from "../models";
 
 export const diamond: ShardProperties[] = [
   {
@@ -10,8 +8,14 @@ export const diamond: ShardProperties[] = [
     borderLeftWidth: 40,
     borderBottomColor: "green",
     filter: [
-      { x: 80, color: "rgb(131, 255, 131)" },
-      { x: 80, color: "rgb(131, 255, 131)" },
+      {
+        x: 80, color: "rgb(131, 255, 131)",
+        y: 0
+      },
+      {
+        x: 80, color: "rgb(131, 255, 131)",
+        y: 0
+      },
     ],
   },
   {
@@ -21,10 +25,13 @@ export const diamond: ShardProperties[] = [
     borderRightWidth: 40,
     borderLeftWidth: 40,
     borderTopColor: "yellow",
-    filter: [{ x: 80, color: "rgb(252, 252, 146)" }],
+    filter: [{
+      x: 80, color: "rgb(252, 252, 146)",
+      y: 0
+    }],
   },
   {
-    id: 48,
+    id: 3,
     top: 48,
     borderTopWidth: 160,
     borderLeftWidth: 120,
@@ -39,15 +46,21 @@ export const diamond: ShardProperties[] = [
     borderTopColor: "purple",
   },
   {
-    id: 80,
+    id: 5,
     top: 48,
     borderTopWidth: 54,
     borderRightWidth: 40,
     borderLeftWidth: 40,
     borderTopColor: "red",
     filter: [
-      { x: 80, color: "pink" },
-      { x: 80, color: "pink" },
+      {
+        x: 80, color: "pink",
+        y: 0
+      },
+      {
+        x: 80, color: "pink",
+        y: 0
+      },
     ],
   },
 ];

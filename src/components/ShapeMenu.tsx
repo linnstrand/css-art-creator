@@ -1,49 +1,48 @@
-import React from "react";
-import { ShardPropertiesForm } from "./ShardPropertiesForm";
-import styled from "styled-components";
-import { ShardProperties } from "@/app/models";
-import { getShardCSS } from "@/app/util";
-import { shapeAtom } from "@/app/atoms";
-import { useAtom } from "jotai";
+import React from 'react';
+import { ShardPropertiesForm } from './ShardPropertiesForm';
+import { useAtom } from 'jotai';
+import { shapeAtom } from '../atoms';
+import { ShardProperties } from '../models';
+import { getShardCSS } from '../util';
 
 const shapes: {
   name: string;
   style: ShardProperties;
 }[] = [
   {
-    name: "triangle",
+    name: 'triangle',
     style: {
       borderRightWidth: 40,
       borderBottomWidth: 64,
       borderLeftWidth: 40,
-      borderBottomColor: "teal",
+      borderBottomColor: 'teal',
     },
   },
   {
-    name: "triangle_right",
+    name: 'triangle_right',
     style: {
       borderTopWidth: 64,
       borderLeftWidth: 80,
-      borderTopColor: "teal",
+      borderTopColor: 'teal',
     },
   },
   {
-    name: "circle",
+    name: 'circle',
     style: {
       left: 10,
-      borderRadius: "50%",
+      borderRadius: '50%',
       height: 64,
       width: 64,
-      backgroundColor: "teal",
+      backgroundColor: 'teal',
     },
   },
   {
-    name: "rectangle",
+    name: 'rectangle',
     style: {
       height: 64,
       left: 10,
       width: 64,
-      backgroundColor: "teal",
+      backgroundColor: 'teal',
     },
   },
 ];
@@ -64,13 +63,13 @@ export const ShapeMenu = () => {
             {
               borderTopWidth: 64,
               borderLeftWidth: 40,
-              borderTopColor: "teal",
+              borderTopColor: 'teal',
             },
             {
               borderTopWidth: 64,
               left: 40,
               borderRightWidth: 40,
-              borderTopColor: "#ff8ca0",
+              borderTopColor: '#ff8ca0',
             },
           ]}
         />
@@ -80,10 +79,10 @@ export const ShapeMenu = () => {
             borderRightWidth: 16,
             borderBottomWidth: 24,
             borderLeftWidth: 16,
-            borderBottomColor: "green",
+            borderBottomColor: 'green',
             filter: [
-              { x: 21, y: 21, color: "rgb(131, 255, 131)" },
-              { x: 21, y: 21, color: "rgb(131, 255, 131)" },
+              { x: 21, y: 21, color: 'rgb(131, 255, 131)' },
+              { x: 21, y: 21, color: 'rgb(131, 255, 131)' },
             ],
           }}
         />
@@ -98,12 +97,6 @@ export const ShapeMenu = () => {
     </div>
   );
 };
-
-const Wrapper = styled.div`
-  position: relative;
-  width: 5em;
-  height: 4em;
-`;
 
 const ShapeMenuItem = ({
   styles,
@@ -121,7 +114,7 @@ const ShapeMenuItem = ({
 
   return (
     <div className="frame" onClick={addNew}>
-      <Wrapper>
+      <div className="relative w-[5em] h-[4em]">
         {Array.isArray(styles) ? (
           styles.map((s, i) => (
             <div className="shard" key={i} style={getShardCSS(s)}></div>
@@ -129,7 +122,7 @@ const ShapeMenuItem = ({
         ) : (
           <div className="shard" style={getShardCSS(styles)}></div>
         )}
-      </Wrapper>
+      </div>
     </div>
   );
 };

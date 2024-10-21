@@ -1,7 +1,6 @@
-"use client";
-import { ShapeAreaClip } from "../components/ShapeAreaClip";
+import { ShapeAreaClip } from '../components/ShapeAreaClip';
 
-export default function Home() {
+export default function Shape() {
   return (
     <main>
       <div className="container">

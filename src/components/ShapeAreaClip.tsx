@@ -1,5 +1,4 @@
-"use client";
-import { DragEventHandler, useEffect, useState } from "react";
+import { DragEventHandler, useEffect, useState } from 'react';
 
 type Props = {
   corners: number;
@@ -28,13 +27,13 @@ export const ShapeAreaClip = ({ corners, size }: Props) => {
   const [coords, setCoords] = useState<
     { x: number; y: number }[] | undefined
   >();
-  const [poly, setPoly] = useState("");
+  const [poly, setPoly] = useState('');
 
   useEffect(() => {
     const radius = size / 2;
     const c = getShape(corners);
     setCoords(c);
-    const p = c.map((c) => `${c.x}% ${c.y}%`).join(", ");
+    const p = c.map((c) => `${c.x}% ${c.y}%`).join(', ');
     setPoly(`polygon(${p})`);
   }, [corners, size]);
 
@@ -58,7 +57,7 @@ function DragHandle({ c }: { c: { x: number; y: number } }) {
   const dropped: DragEventHandler<HTMLDivElement> = (event) => {};
 
   const dragging: DragEventHandler<HTMLDivElement> = (event) => {
-    throw new Error("Function not implemented.");
+    console.log('dragging');
   };
 
   return (

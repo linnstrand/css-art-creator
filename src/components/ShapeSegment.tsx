@@ -1,9 +1,8 @@
-"use client";
-import { activeShardAtom } from "@/app/atoms";
-import { ShardProperties } from "@/app/models";
-import { getShardCSS, initialValue } from "@/app/util";
-import { useAtom } from "jotai";
-import { useState, useEffect, forwardRef } from "react";
+import { useAtom } from 'jotai';
+import { useState, useEffect, forwardRef } from 'react';
+import { ShardProperties } from '../models';
+import { activeShardAtom } from '../atoms';
+import { getShardCSS, initialValue } from '../util';
 
 interface Props {
   style: ShardProperties;
@@ -36,10 +35,10 @@ export const ShapeSegment = forwardRef<HTMLDivElement, Props>(
             className="shard"
             style={{
               ...css,
-              filter: "none",
-              pointerEvents: "none",
-              outline: "1px dashed rgb(0 20 145 )",
-              backgroundColor: "rgb(0 155 255 )",
+              filter: 'none',
+              pointerEvents: 'none',
+              outline: '1px dashed rgb(0 20 145 )',
+              backgroundColor: 'rgb(0 155 255 )',
               opacity: 0.5,
               zIndex: 20,
             }}
@@ -49,4 +48,4 @@ export const ShapeSegment = forwardRef<HTMLDivElement, Props>(
     );
   }
 );
-ShapeSegment.displayName = "ShapeSegment";
+ShapeSegment.displayName = 'ShapeSegment';

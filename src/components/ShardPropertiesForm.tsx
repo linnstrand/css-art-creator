@@ -1,22 +1,8 @@
-import React from "react";
-import { useAtom } from "jotai";
-import { activeShardAtom } from "@/app/atoms";
-import styled from "styled-components";
-import { FormField } from "./FormField";
+import React from 'react';
+import { useAtom } from 'jotai';
+import { FormField } from './Form/FormField';
+import { activeShardAtom } from '../atoms';
 
-const FieldSet = styled.fieldset`
-  padding: 0.5rem;
-  display: flex;
-  flex-flow: row wrap;
-  border: 1px solid rgb(222 226 230);
-`;
-const FieldsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
-
-const Legend = styled.legend``;
 export const ShardPropertiesForm = () => {
   const [activeShard, setActiveShard] = useAtom(activeShardAtom);
 
@@ -34,9 +20,9 @@ export const ShardPropertiesForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <FieldsWrapper>
-        <FieldSet>
-          <Legend>Position</Legend>
+      <div className="flex flex-wrap gap-2 basis-1/2">
+        <fieldset className="flex flex-row gap-1 p-2 border border-gray-300">
+          <legend>Position</legend>
           <FormField
             type="number"
             name="top"
@@ -53,9 +39,9 @@ export const ShardPropertiesForm = () => {
           >
             Left
           </FormField>
-        </FieldSet>
-        <FieldSet>
-          <Legend>Styling</Legend>
+        </fieldset>
+        <fieldset className="flex flex-wrap p-2 border border-gray-300">
+          <legend>Dimensions</legend>
           <FormField
             type="number"
             name="height"
@@ -80,9 +66,9 @@ export const ShardPropertiesForm = () => {
           >
             Border Radius
           </FormField>
-        </FieldSet>
-        <FieldSet>
-          <Legend>Borders</Legend>
+        </fieldset>
+        <fieldset className="flex flex-wrap p-2 border border-gray-300">
+          <legend>Borders</legend>
           <FormField
             type="number"
             name="borderTopWidth"
@@ -115,9 +101,9 @@ export const ShardPropertiesForm = () => {
           >
             Left
           </FormField>
-        </FieldSet>
-        <FieldSet>
-          <Legend> Colors</Legend>
+        </fieldset>
+        <fieldset className="flex flex-wrap p-2 border border-gray-300">
+          <legend> Colors</legend>
           <FormField
             value={activeShard.backgroundColor}
             onChange={handleChange}
@@ -153,11 +139,11 @@ export const ShardPropertiesForm = () => {
           >
             Left
           </FormField>
-        </FieldSet>
+        </fieldset>
         <div>
           {activeShard.filter?.map((filter, i) => (
-            <FieldSet key={i}>
-              <Legend>Filter</Legend>
+            <fieldset key={i}>
+              <legend>Filter</legend>
               <FormField
                 type="number"
                 name="x"
@@ -178,13 +164,14 @@ export const ShardPropertiesForm = () => {
                 value={filter.color}
                 onChange={handleChange}
                 name="color"
+                type="color"
               >
                 Color
               </FormField>
-            </FieldSet>
+            </fieldset>
           ))}
         </div>
-      </FieldsWrapper>
+      </div>
     </form>
   );
 };
